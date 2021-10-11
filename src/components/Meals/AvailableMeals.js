@@ -1,10 +1,13 @@
 import classes from "./AvailableMeals.module.css";
+import MealItem from "./MealItem/MealItem";
+import Card from "../UI/Card";
 
 const DUMMY_MEALS = [
   {
     id: "m1",
     name: "Double Cheese Margherita Pizza",
-    description: "The ever-popular Margherita - loaded with extra cheese... oodies of it!",
+    description:
+      "The ever-popular Margherita - loaded with extra cheese... oodies of it!",
     price: 22.99,
   },
   {
@@ -28,10 +31,21 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => <li>{meal.name}</li>);
+  
   return (
     <section className={classes.meals}>
-      <ul>{mealsList}</ul>
+      <Card>
+      <ul>
+        {DUMMY_MEALS.map((meal) => (
+          <MealItem
+            key={meal.id}
+            name={meal.name}
+            description={meal.description}
+            price={meal.price}
+          />
+        ))}
+      </ul>
+      </Card>
     </section>
   );
 };
